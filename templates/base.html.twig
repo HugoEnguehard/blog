@@ -14,6 +14,14 @@
         {% endblock %}
     </head>
     <body>
+        {% block aside %}
+            <ul>
+                <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                <li><a href="{{ path('creer_article') }}">Créer Article</a></li>
+                <li><a href="{{ path('contactCity', {'city': 'Montpellier' }) }}">Contact Montpellier</a></li>
+                <li><a href="{{ path('contactCity', {'city': 'Béziers' }) }}">Contact Béziers</a></li>
+            </ul>
+        {% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>

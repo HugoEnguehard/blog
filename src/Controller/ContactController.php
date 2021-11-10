@@ -19,7 +19,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/contact/{city}", name="contactCity")
+     * @Route("/Contact/{city}", name="contactCity")
      */  
     public function cities(string $city): Response
     {
