@@ -6,6 +6,10 @@
     {% endif %}
 {% endblock %}
 
+{% block stylesheets %}
+   {{ encore_entry_link_tags('contact') }}
+{% endblock %}
+
 {% block body %}
 
 <div>
@@ -15,5 +19,6 @@
     {% if city is defined %}
         <h1>Bienvenu à {{ city }} !</h1>
     {% endif %}
+    <div class="test"><p>TEST</p></div>
 </div>
 {% endblock %}
