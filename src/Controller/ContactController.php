@@ -5,9 +5,20 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ContactRepository;
 
 class ContactController extends AbstractController
 {
+    /**
+     * @var ContactRepository
+     */
+    private $contactRepository;
+
+    public function __construct(ContactRepository $contactRepository){
+        $this->contactRepository = $contactRepository;
+    }
+
+
     /**
      * @Route("/contact", name="contact")
      */
@@ -15,17 +26,24 @@ class ContactController extends AbstractController
     {
         return $this->render('pages/contact.html.twig', [
             'name' => 'Hugo',
+            'contacts' => $this->contactRepository->findAll()
         ]);
     }
+    
 
     /**
-     * @Route("/Contact/{city}", name="contactCity")
+     * @Route("/contact/{id}", name="contactId")
      */  
-    public function cities(string $city): Response
+    public function ids(string $id): Response
     {
-        
+        $contact = $this->contactRepository->find($id);
+
+        if(!$contact){
+            $contact = ["prenom" => "default", "nom" => "default"];
+        }
+
         return $this->render('pages/contact.html.twig', [
-            'city' => $city,
+            'contact' => $contact,
         ]);
     }
 }

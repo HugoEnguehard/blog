@@ -3,12 +3,5 @@
 {% block title %}Créer article{% endblock %}
 
 {% block body %}
-
-<form method="post">
-    <label for="titre">Titre article</label>
-    <input type="text" placeholder="Titre.." name="titre">
-
-    <input type="submit" value="Créer article">
-</form>
-
+    {{ form(form) }}
 {% endblock %}

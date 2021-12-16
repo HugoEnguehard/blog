@@ -16,9 +16,20 @@
     {% if name is defined %}
         <h1>Hello {{ name }} ! ✅</h1>
     {% endif %}
-    {% if city is defined %}
-        <h1>Bienvenu à {{ city }} !</h1>
-    {% endif %}
     <div class="test"><p>TEST</p></div>
+
+    {% if contacts is defined %}
+        {% if contacts is not empty %}
+            {% for contact in contacts %}
+                {{ contact.prenom }}
+                {{ contact.nom }} |
+                {{ contact.email }}
+                </br>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    {% if contact is defined %}
+        Bienvenue {{contact.prenom}} {{contact.nom}}
+    {% endif %}
 </div>
 {% endblock %}
